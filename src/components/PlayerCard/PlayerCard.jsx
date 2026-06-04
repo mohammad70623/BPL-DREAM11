@@ -10,6 +10,12 @@ const PlayerCard = ({player,setAvailableBalance, availableBalance, purshasedPlay
         alert("Not Enough Coins")
         return 
     }
+
+     const alreadyAdded = purshasedPlayers.find(p => p.id === playerData.id)
+    if(alreadyAdded){
+        alert("Player already selected!")
+        return
+    }
 setIsSelected(true); setAvailableBalance(availableBalance-playerData.price)
  setPurchasedPlayers([...purshasedPlayers, playerData])
   }

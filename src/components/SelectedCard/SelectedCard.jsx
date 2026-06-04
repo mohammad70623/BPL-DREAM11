@@ -1,7 +1,11 @@
 import React from 'react';
 
-const SelectedCard = ({player}) => {
+const SelectedCard = ({player, removePlayer}) => {
     console.log(player)
+
+    const handleRemove=()=>{
+        removePlayer(player)
+    }
     return (
           <div className='border-2 mt-2 border-gray-300 p-3 rounded-2xl flex justify-between items-center'>
              <div className='flex items-center'>
@@ -12,7 +16,7 @@ const SelectedCard = ({player}) => {
 
             </div>
            </div>
-           <div>
+           <div onClick={handleRemove}>
             <img src="https://i.ibb.co.com/B7kY5zJ/Frame.png" alt="" />
            </div>
         </div>

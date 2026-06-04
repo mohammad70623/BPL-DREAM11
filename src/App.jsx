@@ -17,7 +17,12 @@ function App() {
   const [toggle, setToggle] = useState(true)
   const [availableBalance, setAvailableBalance] = useState(6000000000)
   const [purshasedPlayers, setPurchasedPlayers] = useState([])
-  console.log(purshasedPlayers)
+  
+  const removePlayer = (p) => {
+    const filteredData = purshasedPlayers.filter(ply => ply.id != p.id)
+    setPurchasedPlayers(filteredData)
+    setAvailableBalance(availableBalance+p.price)
+  }
   
 
   return (
@@ -37,7 +42,7 @@ function App() {
 {
   toggle === true?<Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
   <AvailablePlayers purshasedPlayers={purshasedPlayers} setPurchasedPlayers={setPurchasedPlayers}  availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playersPromise={playersPromise}></AvailablePlayers>
-</Suspense>:<SelectedPlayers purshasedPlayers={purshasedPlayers} ></SelectedPlayers>
+</Suspense>:<SelectedPlayers removePlayer={removePlayer} purshasedPlayers={purshasedPlayers} ></SelectedPlayers>
 }
 
 
