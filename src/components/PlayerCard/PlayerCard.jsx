@@ -2,7 +2,7 @@ import userImg from "../../assets/user 1.png"
 import flagImage from "../../assets/report 1.png"
 import React, { useState } from 'react';
 
-const PlayerCard = ({player,setAvailableBalance, availableBalance}) => {
+const PlayerCard = ({player,setAvailableBalance, availableBalance, purshasedPlayers,setPurchasedPlayers }) => {
   const [isSelected, setIsSelected] = useState(false)  
 
   const handleSelected = (playerData) =>{
@@ -11,7 +11,10 @@ const PlayerCard = ({player,setAvailableBalance, availableBalance}) => {
         return 
     }
 setIsSelected(true); setAvailableBalance(availableBalance-playerData.price)
+ setPurchasedPlayers([...purshasedPlayers, playerData])
   }
+
+ 
 
     return (
         <div className="card bg-base-100  shadow-sm p-4">
@@ -23,7 +26,7 @@ setIsSelected(true); setAvailableBalance(availableBalance-playerData.price)
   </figure>
   <div className="mt-4">
    <div className="flex">
-    <img src={userImg} alt="" /> <h2 className="card-title ml-2">{player.playerName
+    <img src= {userImg} alt="" /> <h2 className="card-title ml-2">{player.playerName
 }</h2>
    </div>
    <div className="flex justify-between mt-4 border-b-2 pb-2 border-gray-400">
